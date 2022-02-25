@@ -19,9 +19,6 @@
     "helmet": "4.6.0",
     "knex": "0.95.14",
     "sqlite3": "5.0.2",
-    "bcryptjs": "^2.4.3",
-    "dotenv": "^16.0.0",
-    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "@types/jest": "27.0.3",
