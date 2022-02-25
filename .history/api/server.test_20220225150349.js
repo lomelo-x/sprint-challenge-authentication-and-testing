@@ -9,10 +9,15 @@ const user1 = {
 
 const user2 = {
 	username: 'User002',
-	password: '',
+	password: 'PASSWORD',
 };
 
 const user3 = {
+	username: 'User003',
+	password: '',
+};
+
+const user4 = {
 	username: '',
 	password: '',
 };
@@ -37,22 +42,14 @@ describe('[POST] /api/auth/register', () => {
 		expect(res.status).toBe(201);
 	});
 
-	it('should return message: username taken if username already exists', async () => {
+  it('should return status: 422 if username is taken', async () => {
 		let res = await request(server).post('/api/auth/register').send(user1);
-		res = await request(server).post('/api/auth/register').send(user1);
-		expect(res.body.message).toEqual('username taken');
+    res = await request(server).post('/api/auth/register').send(user1)
+		expect(res.status).toBe(422);
 	});
 
-	it('should return message: username and password required if no username or password', async () => {
+  it('should return message: username and password required if no username or password', async () => {
 		const res = await request(server).post('/api/auth/register').send(user2);
-		expect(res.body.message).toEqual('username and password required');
+		expect(res.status).toBe(201);
 	});
 });
-
-describe('[POST /api/auth/login', () => {
-  it('should return message: welcome (logged in user)', async () => {
-    const res = await request(server).post('/api/auth/login').send(user1)
-    expect(res.body.message).toEqual(`welcome, ${user1.username}`);
-  })
-
-})

@@ -37,10 +37,10 @@ describe('[POST] /api/auth/register', () => {
 		expect(res.status).toBe(201);
 	});
 
-	it('should return message: username taken if username already exists', async () => {
+	it('should return message: username taken if user already exists', async () => {
 		let res = await request(server).post('/api/auth/register').send(user1);
 		res = await request(server).post('/api/auth/register').send(user1);
-		expect(res.body.message).toEqual('username taken');
+		expect(res.status).toBe(422);
 	});
 
 	it('should return message: username and password required if no username or password', async () => {
