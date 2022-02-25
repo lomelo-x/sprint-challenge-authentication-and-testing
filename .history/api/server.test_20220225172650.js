@@ -43,7 +43,7 @@ describe('[GET] /api/jokes', () => {
 
   test('[3] should return joked array if logged in', async () => {
     let res = await request(server).post('/api/auth/login').send(user1)
-    res = await request(server).get('/api/jokes').set('Authorization', res.header.token)
+    res = await request(server).get('/api/jokes').set(('Authorization': res.user.token)
     expect(res.body).toHaveLength(3);
   })
 })

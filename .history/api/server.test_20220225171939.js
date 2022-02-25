@@ -36,43 +36,43 @@ test('[1]Expect test env to be  testing', () => {
 });
 
 describe('[GET] /api/jokes', () => {
-  test('[2] should return message: token required if not logged in', async () => {
+  ('[2] should return message: token required if not logged in', async () => {
     const res = await request(server).get('/api/jokes')
     expect(res.body.message).toEqual('token required');
   })
 
-  test('[3] should return joked array if logged in', async () => {
+  ('[3] should return joked array if logged in', async () => {
     let res = await request(server).post('/api/auth/login').send(user1)
-    res = await request(server).get('/api/jokes').set('Authorization', res.header.token)
+    res = await request(server).get('/api/jokes').set({'Authorization': res.body.token})
     expect(res.body).toHaveLength(3);
   })
 })
 
 describe('[POST] /api/auth/register', () => {
-	test('[4] should return status: 201 if new user created', async () => {
+	('[4] should return status: 201 if new user created', async () => {
 		const res = await request(server).post('/api/auth/register').send(user1);
 		expect(res.status).toBe(201);
 	});
 
-	test('[5] should return message: username taken if username already exists', async () => {
+	('[5] should return message: username taken if username already exists', async () => {
 		let res = await request(server).post('/api/auth/register').send(user1);
 		res = await request(server).post('/api/auth/register').send(user1);
 		expect(res.body.message).toEqual('username taken');
 	});
 
-	test('[6] should return message: username and password required if no username or password', async () => {
+	('[6] should return message: username and password required if no username or password', async () => {
 		const res = await request(server).post('/api/auth/register').send(user2);
 		expect(res.body.message).toEqual('username and password required');
 	});
 });
 
 describe('[POST /api/auth/login', () => {
-  test('[7] should return message: welcome (logged in user)', async () => {
+  ('[7] should return message: welcome (logged in user)', async () => {
     const res = await request(server).post('/api/auth/login').send(user1)
     expect(res.body.message).toEqual(`welcome, ${user1.username}`);
   })
 
-  test('[8] should return message: username and password required if missing username or password', async () => {
+  ('[8] should return message: username and password required if missing username or password', async () => {
     const res = await request(server).post('/api/auth/login').send(user2)
     expect(res.body.message).toEqual('username and password required');
   })
