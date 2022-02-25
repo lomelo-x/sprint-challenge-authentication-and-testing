@@ -1,12 +1,11 @@
 const router = require('express').Router();
-const { restricted } = require('../middleware/restricted');
-
+const restricted = require()
 router.post('/register', (req, res) => {
-	res.end('implement register, please!');
-	const { username, password } = req.body;
-	const hash = bcrypt.hashSync(password, 8);
+  res.end('implement register, please!');
+  const { username, password } = req.body;
+  const hash = bcrypt.hashSync(password, 8)
 
-	/*
+  /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
     DO NOT EXCEED 2^8 ROUNDS OF HASHING!
@@ -34,8 +33,8 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-	res.end('implement login, please!');
-	/*
+  res.end('implement login, please!');
+  /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
 
