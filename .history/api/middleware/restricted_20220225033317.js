@@ -2,6 +2,7 @@ const { JWT_SECRET } = require('../top-secret');
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
+	next();
 	/*
     IMPLEMENT
 

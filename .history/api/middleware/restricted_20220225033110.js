@@ -1,7 +1,7 @@
-const { JWT_SECRET } = require('../top-secret');
-const jwt = require('jsonwebtoken');
-
+const { JWT_SECRET } = require("../top-secret");
+const jwt = re
 module.exports = (req, res, next) => {
+	next();
 	/*
     IMPLEMENT
 
@@ -20,15 +20,5 @@ module.exports = (req, res, next) => {
 			message: 'token required',
 		});
 	}
-	jwt.verify(token, JWT_SECRET, (error, decodedToken) => {
-		if (error) {
-			next({
-				status: 401,
-				message: 'invalid token',
-			});
-		} else {
-			req.decodedToken = decodedToken;
-			next();
-		}
-	});
+  
 };
