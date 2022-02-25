@@ -72,7 +72,7 @@ describe('[POST /api/auth/login', () => {
     expect(res.body.message).toEqual(`welcome, ${user1.username}`);
   })
 
-  it('[8] should return message: username and password required if missing username or password', async () => {
+  it('[7] should return message: username and password required if missing username or password', async () => {
     const res = await request(server).post('/api/auth/login').send(user2)
     expect(res.body.message).toEqual('username and password required');
   })
