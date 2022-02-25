@@ -77,8 +77,6 @@ function restricted(req, res, next) {
 }
 
 module.exports = {
-	checkUsernameFree,
-	checkUsernameExists,
-	checkUserInput,
-	restricted,
+
+  restricted,
 };

@@ -43,6 +43,11 @@ function checkUserInput(req, res, next) {
 		next();
 	}
 }
+
+module.exports = {
+	
+};
+
 /*
     IMPLEMENT
 
@@ -77,8 +82,5 @@ function restricted(req, res, next) {
 }
 
 module.exports = {
-	checkUsernameFree,
-	checkUsernameExists,
-	checkUserInput,
 	restricted,
 };

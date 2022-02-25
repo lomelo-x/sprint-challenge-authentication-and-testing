@@ -14,7 +14,7 @@ async function add({ username, password }) {
 
 function find() {
 	return db('users')
-    .select('id', 'username', 'password')
+    .select('id', 'username', 'password');
 }
 
 function findBy(filter) {

@@ -3,6 +3,8 @@ const User = require('../users/user-model');
 const { JWT_SECRET } = require('../top-secret');
 const jwt = require('jsonwebtoken');
 
+const User = require('../users/user-model');
+
 async function checkUsernameFree(req, res, next) {
 	try {
 		const users = await User.findBy({ username: req.body.username });
@@ -43,6 +45,13 @@ function checkUserInput(req, res, next) {
 		next();
 	}
 }
+
+module.exports = {
+	checkUsernameFree,
+	checkUsernameExists,
+	checkUserInput,
+};
+
 /*
     IMPLEMENT
 
@@ -77,8 +86,5 @@ function restricted(req, res, next) {
 }
 
 module.exports = {
-	checkUsernameFree,
-	checkUsernameExists,
-	checkUserInput,
 	restricted,
 };

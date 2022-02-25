@@ -13,18 +13,15 @@ async function add({ username, password }) {
 }
 
 function find() {
-	return db('users')
-    .select('id', 'username', 'password')
+	return db('users').select('id', 'username', 'password');
 }
 
 function findBy(filter) {
-	return db('users')
-    .select('id', 'username', 'password')
-    .where(filter);
+	return db('users').select('id', 'username', 'password').where(filter);
 }
 function findById(id) {
 	return db('users')
-        .select('id', 'username', 'password')
+		.select('id', 'username','password')
 		.where('users.id', id)
 		.first();
 }

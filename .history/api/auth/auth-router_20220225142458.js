@@ -7,6 +7,7 @@ const {
 	checkUsernameFree,
 	checkUsernameExists,
 	checkUserInput,
+  restricted,
 } = require('../middleware/restricted');
 
 router.post('/register', checkUserInput, checkUsernameFree, (req, res, next) => {
