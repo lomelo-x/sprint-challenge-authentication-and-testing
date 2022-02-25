@@ -3,14 +3,13 @@ const { restricted } = require('../middleware/restricted');
 const {
 	checkUsernameFree,
 	checkUsernameExists,
-	checkUserInput,
 } = require('../middleware/auth-middleware');
 const User = require('../users/user-model');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../top-secret');
 
-router.post('/register', checkUserInput, checkUsernameFree, (req, res, next) => {
+router.post('/register', checkUsernameFree, (req, res, next) => {
 	const { id, username, password } = req.body;
 	const hash = bcrypt.hashSync(password, 8);
 	User.add({ id, username, password: hash })

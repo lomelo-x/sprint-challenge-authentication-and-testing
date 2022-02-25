@@ -40,9 +40,14 @@ function checkUserInput (req, res, next) {
 		next();
 	}
 }
+else if (!req.body.username || !req.body.password) {
+    next({
+        status: 422,
+        message: 'username and password required',
+    });
+}
 
 module.exports = {
 	checkUsernameFree,
 	checkUsernameExists,
-    checkUserInput,
 };

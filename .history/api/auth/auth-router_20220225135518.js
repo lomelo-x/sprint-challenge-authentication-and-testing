@@ -10,7 +10,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../top-secret');
 
-router.post('/register', checkUserInput, checkUsernameFree, (req, res, next) => {
+router.post('/register', checkcheckUsernameFree, (req, res, next) => {
 	const { id, username, password } = req.body;
 	const hash = bcrypt.hashSync(password, 8);
 	User.add({ id, username, password: hash })

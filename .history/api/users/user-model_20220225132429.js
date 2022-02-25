@@ -1,15 +1,15 @@
 const db = require('../../data/dbConfig');
 
 async function add({ username, password }) {
-	let createdUser;
+	let created_user;
 	await db.transaction(async (trx) => {
 		const [id] = await trx('users').insert({
 			username,
 			password,
 		});
-		createdUser = id;
+		created_user_id = id;
 	});
-	return findById(createdUser);
+	return findById(created_user_id);
 }
 
 function find() {

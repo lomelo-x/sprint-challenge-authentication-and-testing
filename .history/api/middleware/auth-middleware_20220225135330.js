@@ -41,8 +41,9 @@ function checkUserInput (req, res, next) {
 	}
 }
 
+}
+
 module.exports = {
 	checkUsernameFree,
 	checkUsernameExists,
-    checkUserInput,
 };

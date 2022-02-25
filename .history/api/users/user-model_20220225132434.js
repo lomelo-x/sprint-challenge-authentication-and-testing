@@ -7,9 +7,9 @@ async function add({ username, password }) {
 			username,
 			password,
 		});
-		createdUser = id;
+		created_user_id = id;
 	});
-	return findById(createdUser);
+	return findById(created_user_id);
 }
 
 function find() {

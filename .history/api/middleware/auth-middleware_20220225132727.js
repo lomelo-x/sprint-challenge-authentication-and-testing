@@ -30,19 +30,7 @@ const checkUsernameExists = async (req, res, next) => {
 	}
 };
 
-function checkUserInput (req, res, next) {
-	if (!req.body.password || req.body.username) {
-		next({
-            status: 422,
-        message: 'username and password required',
-        });
-	} else {
-		next();
-	}
-}
-
 module.exports = {
 	checkUsernameFree,
 	checkUsernameExists,
-    checkUserInput,
 };
