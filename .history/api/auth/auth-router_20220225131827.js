@@ -8,7 +8,7 @@ const User = require('../users/user-model');
 const bcrypt = require('bcryptjs');
 
 router.post('/register', checkUsernameFree, (req, res, next) => {
-	const { username, password } = req.body;
+	const { id, username, password } = req.body;
 	const hash = bcrypt.hashSync(password, 8);
 	User.add({ username, password: hash })
 		.then((newUser) => {

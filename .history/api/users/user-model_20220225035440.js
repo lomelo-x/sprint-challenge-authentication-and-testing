@@ -4,29 +4,29 @@ const db = require('../../data/db-config.js');
 async function add({ username, password }) {
 	let created_user_id;
 	await db.transaction(async (trx) => {
-		const [user_id] = await trx('users').insert({
+		const [id] = await trx('users').insert({
 			username,
 			password,
 		});
-		created_user_id = user_id;
+		created_user_id = id;
 	});
 	return findById(created_user_id);
 }
 
-function findById(user_id) {
+function findById(id) {
     /**
       You will need to join two tables.
-      Resolves to the user with the given user_id.
+      Resolves to the user with the given id.
   
       {
-        "user_id": 2,
+        "id": 2,
         "username": "sue",
         "role_name": "instructor"
       }
      */users')
       .join('roles', 'users.role_id', 'roles.role_id')
-      .select('user_id', 'username', 'role_name')
-      .where('users.user_id', user_id).first()
+      .select('id', 'username', 'role_name')
+      .where('users.id', id).first()
   }
 
 module.exports = {

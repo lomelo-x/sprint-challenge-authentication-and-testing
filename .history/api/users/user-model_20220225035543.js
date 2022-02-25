@@ -3,20 +3,19 @@ const db = require('../../data/db-config.js');
 async function add({ username, password }) {
 	let created_user_id;
 	await db.transaction(async (trx) => {
-		const [user_id] = await trx('users').insert({
+		const [id] = await trx('users').insert({
 			username,
 			password,
 		});
-		created_user_id = user_id;
+		created_user_id = id;
 	});
 	return findById(created_user_id);
 }
 
-function findById(user_id) {
+function findById(id) {
 	return db('users')
-		
-		.select('user_id', 'username', 'role_name')
-		.where('users.user_id', user_id)
+		.select('id', 'username', 'role_name')
+		.where('users.id', id)
 		.first();
 }
 

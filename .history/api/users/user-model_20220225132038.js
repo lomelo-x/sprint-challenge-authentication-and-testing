@@ -3,26 +3,26 @@ const db = require('../../data/dbConfig');
 async function add({ username, password }) {
 	let created_user_id;
 	await db.transaction(async (trx) => {
-		const [id] = await trx('users').insert({
+		const [uid] = await trx('users').insert({
 			username,
 			password,
 		});
-		created_user_id = id;
+		created_user_id = uid;
 	});
 	return findById(created_user_id);
 }
 
 function find() {
-	return db('users').select('id', 'username', 'password');
+	return db('users').select('uid', 'username', 'password');
 }
 
 function findBy(filter) {
-	return db('users').select('id', 'username', 'password').where(filter);
+	return db('users').select('uid', 'username', 'password').where(filter);
 }
-function findById(id) {
+function findById(uid) {
 	return db('users')
-		.select('id', 'username')
-		.where('users.id', id)
+		.select('uid', 'username')
+		.where('users.uid', uid)
 		.first();
 }
 

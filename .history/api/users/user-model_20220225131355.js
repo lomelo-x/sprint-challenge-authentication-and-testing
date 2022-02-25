@@ -17,13 +17,10 @@ function find() {
 }
 
 function findBy(filter) {
-	return db('users').select('user_id', 'username', 'password').where(filter);
+	return db('users').select('id', 'username', 'password').where(filter);
 }
-function findById(user_id) {
-	return db('users')
-		.select('user_id', 'username')
-		.where('users.user_id', user_id)
-		.first();
+function findById(id) {
+	return db('users').select('id', 'username').where('users.id', id).first();
 }
 
 module.exports = {

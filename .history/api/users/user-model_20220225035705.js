@@ -3,11 +3,11 @@ const db = require('../../data/db-config.js');
 async function add({ username, password }) {
 	let created_user_id;
 	await db.transaction(async (trx) => {
-		const [user_id] = await trx('users').insert({
+		const [id] = await trx('users').insert({
 			username,
 			password,
 		});
-		created_user_id = user_id;
+		created_user_id = id;
 	});
 	return findById(created_user_id);
 }
@@ -15,20 +15,17 @@ async function add({ username, password }) {
 function find() {
 	return db('users')
 		.join('roles', 'users.role_id', 'roles.role_id')
-		.select('user_id', 'username', 'password', 'role_name');
+		.select('id', 'username', 'password', 'role_name');
 }
 
 function findBy(filter) {
 	return db('users')
 		.join('roles', 'users.role_id', 'roles.role_id')
-		.select('user_id', 'username', 'password', 'role_name')
+		.select('id', 'username', 'password', 'role_name')
 		.where(filter);
 }
-function findById(user_id) {
-	return db('users')
-		.select('user_id', 'username')
-		.where('users.user_id', user_id)
-		.first();
+function findById(id) {
+	return db('users').select('id', 'username').where('users.id', id).first();
 }
 
 module.exports = {

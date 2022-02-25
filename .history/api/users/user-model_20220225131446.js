@@ -7,23 +7,20 @@ async function add({ username, password }) {
 			username,
 			password,
 		});
-		created_user_id = user_id;
+		created_user_id = id;
 	});
 	return findById(created_user_id);
 }
 
 function find() {
-	return db('users').select('user_id', 'username', 'password');
+	return db('users').select('id', 'username', 'password');
 }
 
 function findBy(filter) {
-	return db('users').select('user_id', 'username', 'password').where(filter);
+	return db('users').select('id', 'username', 'password').where(filter);
 }
-function findById(user_id) {
-	return db('users')
-		.select('user_id', 'username')
-		.where('users.user_id', user_id)
-		.first();
+function findById(id) {
+	return db('users').select('id', 'username').where('users.id', id).first();
 }
 
 module.exports = {
