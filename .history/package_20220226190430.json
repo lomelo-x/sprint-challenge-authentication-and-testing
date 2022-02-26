@@ -11,7 +11,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lomelo-x/sprint-challenge-authentication-and-testing"
+    "url": "git+https://github.com/BloomInstituteOfTechnology/web-sprint-challenge-authentication-and-testing.git"
+
+    https://github.com/lomelo-x/sprint-challenge-authentication-and-testing
   },
   "license": "ISC",
   "dependencies": {
